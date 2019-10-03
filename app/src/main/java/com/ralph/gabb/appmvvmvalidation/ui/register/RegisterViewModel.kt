@@ -52,6 +52,6 @@ class RegisterViewModel(val userRepository: UserRepository) : ViewModel() {
     }
 
     fun register(firstName: String, lastName: String, username: String, password: String) {
-
+        registerResult.value = FormResult(success = User(firstName, lastName, username, password))
     }
 }

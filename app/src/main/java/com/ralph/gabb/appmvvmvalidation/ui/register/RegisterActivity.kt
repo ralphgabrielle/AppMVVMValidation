@@ -31,10 +31,6 @@ class RegisterActivity : BaseActivity() {
         buttonClickListener()
     }
 
-    private fun observeRegisterResult() {
-
-    }
-
     private fun buttonClickListener() {
         register.setOnClickListener {
             loading.visibility = View.VISIBLE
@@ -44,6 +40,23 @@ class RegisterActivity : BaseActivity() {
                 username.plainText(), password.plainText()
             )
         }
+    }
+
+    private fun observeRegisterResult() {
+        viewModel.registerUserResult.observe(this, Observer {
+            val result = it ?: return@Observer
+
+            loading.visibility = View.GONE
+
+            if (result.success != null) {
+              // success
+            }
+
+            if (result.error != null) {
+
+            }
+
+        })
     }
 
     private fun observeRegisterFormState() {
